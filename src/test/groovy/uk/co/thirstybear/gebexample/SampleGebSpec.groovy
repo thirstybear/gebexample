@@ -5,7 +5,7 @@ import geb.spock.GebSpec
 class SampleGebSpec extends GebSpec{
     def "Can hit Google main page" () {
         when:
-        go "http://www.google.com/"
+        go '/'
 
         then:
         title == 'Google'

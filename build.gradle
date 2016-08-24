@@ -10,7 +10,7 @@ repositories {
 ext {
     versions = [
             groovy    : '2.3.11',
-            selenium  : '3.0.0-beta2',
+            selenium  : '2.51.0',
             spock     : '1.1-groovy-2.4-rc-1',
             geb       : '0.13.1'
     ]
