@@ -1,8 +1,11 @@
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeDriverService
 
-driver = { new ChromeDriver(new ChromeDriverService.Builder()
-        .usingDriverExecutable(new File('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'))
-        .build()) }
-
-baseUrl = 'http://www.google.com/'
+driver = {
+    def driverBuilder = new ChromeDriverService.Builder()
+    if (!System.getenv('CI')) {
+        def osSpecificDriverSuffix = System.getProperty('os.name').replaceAll(' ', '').toLowerCase().substring(0, 3)
+        driverBuilder.usingDriverExecutable(new File("./support/chromedriver-$osSpecificDriverSuffix"))
+    }
+    new ChromeDriver(driverBuilder.build())
+}
